@@ -3,7 +3,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="/vendor/twbs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../vendor/twbs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
   </head>
   <title>Tworzenie formularza zgodego z Twitter Bootstrap</title>
   <body>
@@ -11,6 +11,7 @@
       <div class="row">
         <div class="col-lg-12">
 <?php
+use RadeqBootstrapForm\Form;
 /**
  * Próbka kodu to mały projekt ułatwiający generowanie formularza zgodnego z Twitter Bootstrap
  * Ogólnie to nie robi się spagetti kodu tylko MVC z wykorzystaniem frameworka ale tutaj jest w roli uproszczenia ;)
@@ -19,14 +20,19 @@
  * @license MIT
  */
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 //prosty autoloader klas
 spl_autoload_extensions('.php');
 spl_autoload_register(function($class) {
-    include __DIR__.'/' . str_replace('\\', DIRECTORY_SEPARATOR, $class) . '.php';
+    $c=__DIR__.'/../src/'.str_replace('\\', DIRECTORY_SEPARATOR, $class);
+    require_once $c . '.php';
 });
 
 //wywołanie formularza
-$f=new \model\Form('Przykładowy formularz');
+$f=new Form('Przykładowy formularz');
 $f->set_file_upload();
 
 $f->add_group('Główne', 'Skorzystaj z opcji szybkiej rejestracji');
@@ -46,7 +52,7 @@ if (isset($_FILES['file']) && !empty($_FILES['file']['name'])) echo '<h2>Przesł
 
 ?>     
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        <script src="vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="../vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
         </div>
       </div>
     </div>

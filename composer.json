@@ -1,5 +1,10 @@
 {
+    "name": "Radeq/BootstrapForm",
+    "description": "Simple class help creating Bootstrap Form",
+    "homepage": "https://github.com/Radeq/BootstrapForm",
+    "license": "MIT",
     "require": {
+        "php": ">=5.4.0",
         "twbs/bootstrap": "^3.3"
     }
 }

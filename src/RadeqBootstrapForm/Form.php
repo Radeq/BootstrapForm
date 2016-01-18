@@ -1,6 +1,6 @@
 <?php
 
-namespace model;
+namespace RadeqBootstrapForm;
 
 /**
  * Tworzenie formularza zgodego z Twitter Bootstrap
@@ -55,17 +55,17 @@ class Form
    * @param string $name nazwa inputu
    * @param string $type typ (Input|Password|Radio)
    * @param string $group grupa, null=najnowsza
-   * @return \model\FormInInput
+   * @return FormInInput
    */
   public function in_new($text, $name, $type = 'Text', $group = null)
   {
     if (!$group)
       $group = $this->last_field; //jeśli nie określono do którego to dodaj do ostatniego
     if (in_array($type, $this->support_in)) {
-      $act = '\model\FormIn' . $type;
+      $act = __NAMESPACE__.'\FormIn' . $type;
       $a = new $act($text, $name);
     } else {
-      $a = new \model\FormInText($text, $name);
+      $a = new FormInText($text, $name);
       $a->set_type($type);
     }
     $this->fields[$group]['in'][$name] = $a;
