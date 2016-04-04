@@ -5,3 +5,8 @@ Simple class help creating Bootstrap Form
 
 ```
 composer require Radeq/Bootstrap-Form
+
+
+#Planned features
+- language support
+- validation
