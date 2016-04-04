@@ -6,9 +6,9 @@ namespace RadeqBootstrapForm2\Model;
  * @license MIT
  */
 
-
 /**
- * Interfejs dla obiektu iteratora
+ * Wyjątek
  */
-interface IteratorItemInterface {
+class FormException extends \Exception {
+    
 }

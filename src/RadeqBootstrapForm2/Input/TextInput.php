@@ -19,7 +19,7 @@ class TextInput extends AbstractInput {
      * {@inheritdoc}
      */
     public function getType() {
-        return (isset($this->attributes['type']) && in_array($this->attributes['type'], $this->supportedTypes)) ? $this->attributes['type'] : 'text';
+        return (in_array($this->getAttribute('type'), $this->supportedTypes)) ? $this->getAttribute('type') : 'text';
     }
     
     /**

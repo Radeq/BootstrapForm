@@ -8,8 +8,12 @@ namespace RadeqBootstrapForm2\Model;
 
 
 /**
- * Iterator pozwalający na przejście foreach przez zbiór obiektów
+ *  Interfejs iteratora
  */
 interface IteratorInterface {
-    //public function add(IteratorItemInterface $ai);
+    /**
+     * @throws FormException
+     * @param IteratorItemInterface $ai
+     */
+    public function add(IteratorItemInterface $ai);
 }

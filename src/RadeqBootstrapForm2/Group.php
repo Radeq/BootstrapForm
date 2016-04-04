@@ -7,7 +7,6 @@ namespace RadeqBootstrapForm2;
  * @copyright "Usługi IT Radosław Barteczko" 2016 
  * @license MIT
  */
-
 use RadeqBootstrapForm2\Model\IteratorItemInterface;
 use RadeqBootstrapForm2\Input\AbstractInput;
 
@@ -19,31 +18,44 @@ class Group implements IteratorItemInterface {
 
     /** @var Inputs */
     private $inputs;
-    
+
     /** @var string */
     private $title, $description;
-    
+
     public function __construct($title, $description = null) {
         $this->title = $title;
         $this->description = $description;
         $this->inputs = new Inputs();
     }
 
-    
-    public function getTitle() {
-        return $this->title;
-    }
-
-    public function getDescription() {
-        return $this->description;
-    }
-
+    /**
+     * Tytuł grupy
+     * @param string $title
+     */
     public function setTitle($title) {
         $this->title = $title;
     }
 
+    /**
+     * @return string
+     */
+    public function getTitle() {
+        return $this->title;
+    }
+    
+    /**
+     * Opis grupy
+     * @param string $description
+     */
     public function setDescription($description) {
         $this->description = $description;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription() {
+        return $this->description;
     }
 
     /**
@@ -55,9 +67,9 @@ class Group implements IteratorItemInterface {
         $this->inputs->add($ai);
         return $this;
     }
-    
+
     /**
-     * 
+     * Zwraca wszystkie pola grupy
      * @return Input
      */
     public function getInputs() {

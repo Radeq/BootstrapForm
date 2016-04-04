@@ -40,7 +40,7 @@ class CheckboxInput extends AbstractInput {
     public function show() {
         $r = '     <div class="radio">' . PHP_EOL .
                 '      <label><strong>' . $this->getLabel() . '</strong>: </label>' . PHP_EOL;
-        foreach ($this->attributes['data'] as $k => $v) {
+        foreach ($this->getAttribute('data') as $k => $v) {
             $r.='      <label><input id="'.str_replace('[]', '', $this->getName()).'_'.$k.'" name="'.$this->getName().'"  value="' . $k . '" type="'.$this->getType().'"'. ((in_array($k, $this->getValue())) ? ' checked' : '') . '/> ' . $v . '</label>' . PHP_EOL;
         }
         $r.='     </div>' . PHP_EOL;

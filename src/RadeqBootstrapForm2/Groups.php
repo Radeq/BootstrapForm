@@ -7,6 +7,8 @@ namespace RadeqBootstrapForm2;
  */
 
 use RadeqBootstrapForm2\Model\IteratorAbstract;
+use RadeqBootstrapForm2\Model\IteratorItemInterface;
+use RadeqBootstrapForm2\Model\FormException;
 
 /**
  * Grupy pól dla formularza
@@ -14,7 +16,10 @@ use RadeqBootstrapForm2\Model\IteratorAbstract;
  */
 class Groups extends IteratorAbstract
 {
-    public function add(Group $ai) {
+    public function add(IteratorItemInterface $ai) {
+        if (!$ai instanceof Group) {
+            throw new FormException('Groups->add musi być obiektem klasy Group');
+        }
         $this->items[] = $ai;
     }
 }

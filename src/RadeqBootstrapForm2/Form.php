@@ -14,6 +14,7 @@ use RadeqBootstrapForm2\Model\AttributeTrait;
  * Tworzenie formularza zgodnego z Twitter Bootstrap
  */
 class Form {
+
     const methodPost = 'POST';
     const methodGet = 'GET';
 
@@ -31,8 +32,10 @@ class Form {
     /**
      * @param string $title Wyświetlana nazwa formularza
      */
-    public function __construct($method, $title = null) {
+    public function __construct($method, $title = null, array $attributes = []) {
         $this->setAttribute('method', $method);
+        $this->setAttributesBanned(['method']);
+        $this->setAttributes($attributes+['id'=>'form']);
         $this->title = $title;
         $this->groups = new Groups();
     }
@@ -69,7 +72,7 @@ class Form {
      * @return string
      */
     public function show() {
-        $ciag = '<form id="form"' . $this->getAttributes() . '>' . PHP_EOL;
+        $ciag = '<form '. $this->getAttributes() . '>' . PHP_EOL;
         $ciag .= ($this->title !== null) ? ' <h2>' . $this->title . '</h2>' . PHP_EOL : '';
         /* @var $group Group */
         foreach ($this->groups as $group) {

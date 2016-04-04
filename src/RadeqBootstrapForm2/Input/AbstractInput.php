@@ -33,7 +33,8 @@ abstract class AbstractInput implements InputInterface, IteratorItemInterface {
         $this->label = $label;
         $this->name = $name;
         $this->value = $value;
-        $this->attributes = $attributes;
+        $this->setAttributesBanned(['id', 'name', 'value']);
+        $this->setAttributes($attributes);
         return $this;
     }
 
