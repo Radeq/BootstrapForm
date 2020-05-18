@@ -4,7 +4,7 @@ namespace RadeqBootstrapForm2\Input;
 
 /**
  * @author Radosław Barteczko
- * @copyright "Usługi IT Radosław Barteczko" 2016 
+ * @copyright "Usługi IT Radosław Barteczko" 2016-2020
  * @license MIT
  */
 
@@ -13,73 +13,93 @@ use RadeqBootstrapForm2\Model\IteratorItemInterface;
 use RadeqBootstrapForm2\Model\AttributeTrait;
 
 /**
- * Abstrakcyjne pole wprowadzania danych w formularzu (input)
+ * Abstract input class
  */
-abstract class AbstractInput implements InputInterface, IteratorItemInterface {
+abstract class AbstractInput implements InputInterface, IteratorItemInterface
+{
     use AttributeTrait;
 
     /** @var string */
-    protected $label, $name, $value;
+    protected $label;
+    /** @var string */
+    protected $name;
+    /** @var mixed */
+    protected $value;
 
     /**
-     * 
      * @param string $label
      * @param string $name
-     * @param string $value
+     * @param mixed $value
      * @param array $attributes
      * @return $this
      */
-    public function __construct($label, $name, $value = null, $attributes = []) {
-        $this->label = $label;
-        $this->name = $name;
-        $this->value = $value;
+    public function __construct(string $label, string $name, $value = null, array $attributes = [])
+    {
+        $this->setLabel($label);
+        $this->setName($name);
+        $this->setValue($value);
         $this->setAttributesBanned(['id', 'name', 'value']);
         $this->setAttributes($attributes);
         return $this;
     }
 
     /**
-     * Nazwa wyświetlana pola
+     * Set input label
      * @param string $label
+     * @return self
      */
-    public function setLabel($label) {
+    public function setLabel(string $label): self
+    {
         $this->label = $label;
+        return $this;
     }
-    
+
     /**
+     * Get input label
      * @return string
      */
-    public function getLabel() {
+    public function getLabel()
+    {
         return $this->label;
     }
 
     /**
-     * Nazwa ukryta pola
+     * Set input name
      * @param string $name
+     * @return self
      */
-    public function setName($name) {
+    public function setName($name): self
+    {
         $this->name = $name;
+        return $this;
     }
-    
+
     /**
+     * Get input name
      * @return string
      */
-    public function getName() {
+    public function getName(): string
+    {
         return $this->name;
     }
 
     /**
-     * Wartość pola
-     * @param string $value
+     * Set input value
+     * @param mixed $value
+     * @return self
      */
-    public function setValue($value) {
+    public function setValue($value): self
+    {
         $this->value = $value;
+        return $this;
     }
-    
+
     /**
-     * @return string
+     * Get input value
+     * @return mixed
      */
-    public function getValue() {
+    public function getValue()
+    {
         return $this->value;
     }
 }

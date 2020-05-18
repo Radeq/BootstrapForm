@@ -1,23 +1,27 @@
 <?php
+
 namespace RadeqBootstrapForm2\Model;
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+
+/**
+ * @author Radosław Barteczko
+ * @copyright "Usługi IT Radosław Barteczko" 2016-2020
+ * @license MIT
  */
 
 /**
- * Interfejs formularza
+ * Form item interface
  */
-interface InputInterface {
+interface InputInterface
+{
     /**
-     * Zwraca typ formularza
-     */
-    public function getType();
-    
-    /**
-     * Generuje pole
+     * Get input type
      * @return string
      */
-    public function show();
+    public function getType(): string;
+
+    /**
+     * Show input
+     * @return string
+     */
+    public function show(): string;
 }

@@ -3,8 +3,13 @@
     "description": "Simple class help creating Bootstrap Form",
     "homepage": "https://github.com/Radeq/BootstrapForm",
     "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "RadeqBootstrapForm2\\": "src/RadeqBootstrapForm2/"
+        }
+    },
     "require": {
-        "php": ">=5.4.0",
+        "php": ">=7.2.0",
         "twbs/bootstrap": "^3.3"
     }
 }

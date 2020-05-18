@@ -1,17 +1,20 @@
 <?php
+
 namespace RadeqBootstrapForm2\Model;
+
 /**
  * @author Radosław Barteczko
- * @copyright "Usługi IT Radosław Barteczko" 2016 
+ * @copyright "Usługi IT Radosław Barteczko" 2016-2020
  * @license MIT
  */
 
 use Iterator as BaseIterator;
 
 /**
- * Iterator pozwalający na przejście foreach przez zbiór obiektów
+ * Iterator for objects
  */
-abstract class IteratorAbstract implements BaseIterator, IteratorInterface {
+abstract class IteratorAbstract implements BaseIterator, IteratorInterface
+{
     /** @var array */
     protected $items = [];
     private $index = 0;
@@ -23,7 +26,7 @@ abstract class IteratorAbstract implements BaseIterator, IteratorInterface {
 
     public function next()
     {
-        $this->index ++;
+        $this->index++;
     }
 
     public function key()

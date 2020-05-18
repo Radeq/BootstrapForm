@@ -1,19 +1,21 @@
 <?php
+
 namespace RadeqBootstrapForm2\Model;
+
 /**
  * @author Radosław Barteczko
- * @copyright "Usługi IT Radosław Barteczko" 2016 
+ * @copyright "Usługi IT Radosław Barteczko" 2016-2020
  * @license MIT
  */
 
-
 /**
- *  Interfejs iteratora
+ *  Iterator interface
  */
-interface IteratorInterface {
+interface IteratorInterface
+{
     /**
-     * @throws FormException
      * @param IteratorItemInterface $ai
+     * @throws FormException
      */
     public function add(IteratorItemInterface $ai);
 }

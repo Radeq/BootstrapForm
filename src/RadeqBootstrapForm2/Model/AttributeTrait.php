@@ -4,82 +4,94 @@ namespace RadeqBootstrapForm2\Model;
 
 /**
  * @author Radosław Barteczko
- * @copyright "Usługi IT Radosław Barteczko" 2016 
+ * @copyright "Usługi IT Radosław Barteczko" 2016-2020
  * @license MIT
  */
 
 /**
- * Trait pomagający z atrybutami.
- * Trochę przerost formy nad treścią ;)
+ * Trait for attributes
+ * it's a case of form over content ;)
  */
-trait AttributeTrait {
-
+trait AttributeTrait
+{
     /** @var array */
     protected $attributes = [];
-
     /**
-     * Lista zastrzeżonych atrybutów
-     * @var array 
+     * Restricted input attributes
+     * @var array
      */
     protected $attributesBanned = [];
 
     /**
-     * Dodaje opcję
-     * @param string $name nazwa
-     * @param string $value wartość
-     * @throws FormException
+     * Add attribute
+     * @param string $name
+     * @param string $value
      * @return self
+     * @throws FormException
      */
-    public function setAttribute($name, $value) {
-        if ($this->bannedAttribute($name) === true) {
-            throw new FormException('Atrybut '.$name.' jest zarezerwowany');
+    public function setAttribute($name, $value): self
+    {
+        if ($this->isAttributeBanned($name) === true) {
+            throw new FormException('Attribute ' . $name . ' is reserved');
         }
         $this->attributes[$name] = $value;
         return $this;
     }
 
     /**
-     * Ustawia wszystkie atrybuty
+     * Set attributes
      * @param array $attributes
+     * @return self
      */
-    public function setAttributes(array $attributes) {
+    public function setAttributes(array $attributes): self
+    {
         foreach ($attributes as $name => $value) {
             $this->setAttribute($name, $value);
         }
-    }
-    
-    public function setAttributesBanned($attributesBanned) {
-        $this->attributesBanned = $attributesBanned;
+        return $this;
     }
 
     /**
-     * Zwraca wartość wybranego atrybutu
-     * @param string $name nazwa
-     * @return string null jeśli nie istnieje
+     * Set restricted attributes
+     * @param $attributesBanned
+     * @return self
      */
-    public function getAttribute($name) {
-        return (isset($this->attributes[$name])) ? $this->attributes[$name] : null;
+    public function setAttributesBanned($attributesBanned): self
+    {
+        $this->attributesBanned = $attributesBanned;
+        return $this;
     }
 
     /**
-     * Zwraca atrybuty w formie zserializowanej do atrybutów formularza/inputa
+     * Get attribute value
+     * @param string $name
+     * @return string|null null also if not exist
+     */
+    public function getAttribute($name)
+    {
+        return array_key_exists($name, $this->attributes) ? $this->attributes[$name] : null;
+    }
+
+    /**
+     * Get serialized attributes
      * @return string
      */
-    protected function getAttributes() {
+    protected function getAttributes(): string
+    {
         $r = '';
         foreach ($this->attributes as $k => $v) {
-            $r.=' ' . $k . '="' . $v . '"';
+            $r .= ' ' . $k . '="' . $v . '"';
         }
         return $r;
     }
 
     /**
-     * Sprawdza czy atrybut nie jest zastrzeżony
+     * Check is attribute restricted
      * @param string $name
      * @return boolean
      */
-    private function bannedAttribute($name) {
+    private function isAttributeBanned($name): bool
+    {
         return in_array($name, $this->attributesBanned);
     }
-
 }

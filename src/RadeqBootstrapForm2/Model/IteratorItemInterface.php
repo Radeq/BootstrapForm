@@ -1,14 +1,16 @@
 <?php
+
 namespace RadeqBootstrapForm2\Model;
+
 /**
  * @author Radosław Barteczko
- * @copyright "Usługi IT Radosław Barteczko" 2016 
+ * @copyright "Usługi IT Radosław Barteczko" 2016-2020
  * @license MIT
  */
 
-
 /**
- * Interfejs dla obiektu iteratora
+ * Iterator item inteface
  */
-interface IteratorItemInterface {
+interface IteratorItemInterface
+{
 }
